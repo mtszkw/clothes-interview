@@ -44,6 +44,8 @@ Confusion Matrix for the hold-out test set:
 
 ![](doc/confusion_matrix.png)
 
+Training notebook is also [available on Colab](https://colab.research.google.com/drive/1t9Qb5Y8PuXI1QpVO0C-jw4yTQh9HhiQ3?usp=sharing)
+
 ### Inference
 
 To test the model, use `inference.py` script which takes only one argument: image url. As an output, the script prints predicted class name (with the highest score) and softmax score for that class. Example usages:
