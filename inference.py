@@ -1,13 +1,9 @@
-import os
 import argparse
 import requests
-import tarfile
 
-import cv2
 import numpy as np
 from skimage.io import imread
 import tensorflow as tf
-from tensorflow.keras.applications import MobileNetV2
 
 from preprocessing import preprocess_func
 from inference_utils import extract_model, prediction_vector_to_label
@@ -33,4 +29,5 @@ if __name__ == "__main__":
     inference_model = tf.keras.models.load_model('./content/mobilenet_fashion_clothes_clf/')
 
     y_pred = inference_model.predict(image, batch_size=1)
-    print('Predicted class:', prediction_vector_to_label(y_pred))
+    label, score = prediction_vector_to_label(y_pred)
+    print(f'Predicted class: {label} (confidence score: {score:.5f})')

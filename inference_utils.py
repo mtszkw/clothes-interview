@@ -22,5 +22,6 @@ def prediction_vector_to_label(y_pred):
         9: 't-shirt'
     }
 
-    y_pred = np.argmax(y_pred, axis=1)[0]
-    return class_names[y_pred]
+    max_score = y_pred.max()
+    max_label = np.argmax(y_pred, axis=1)[0]
+    return class_names[max_label], max_score
