@@ -23,11 +23,30 @@ Base part (extraction) of MobileNetV2 was frozen during this training. Only dens
 
 ### Training
 
+Before training, data was preprocessed using:
+- range conversion, to transform pixel values to [0, 255] range from [-1, 1],
+- resizing function to convert all images to (224, 224) size,
+- built-in Keras MobileNetV2 preprocesssing function (to transform images to the expected format).
+
+Model was trained for 300 epochs with early stopping (finished after 48 epochs) and:
+- Adam optimizer (lr = 1e-3),
+- CategoricalCrossEntropy loss,
+- batch size = 64,
+- seed = 2020 used only for training set,
+- augmentations (rotation, width/height shift, zoom, horizontal flip) for training and validation,
+- ReduceLROnPlateau callback, reducing LR by a factor of 0.25 every 10 epochs with no improvement (delta 1e-2).
+
+History visualization (training and validation sets) after 48 epochs:
+
 ![](doc/history.png)
 
-![](doc/confusion_matrix)
+Confusion Matrix for the hold-out test set:
+
+![](doc/confusion_matrix.png)
 
 ### Inference
+
+To test the model, use `inference.py` script which takes only one argument: image url. As an output, the script prints predicted class name (with the highest score) and softmax score for that class. Example usages:
 
 ```
 python inference.py --url "https://images-na.ssl-images-amazon.com/images/I/816gWcWYTuL._UL1500_.jpg"
