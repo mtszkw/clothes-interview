@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+tensorflow = "==2.4.1"
+matplotlib = "==3.2.2"
+pandas = "==1.1.5"
+opencv-python = "==4.1.2.30"
+scikit-image = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
