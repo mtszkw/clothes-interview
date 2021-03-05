@@ -57,3 +57,12 @@ python inference.py --url "https://images-na.ssl-images-amazon.com/images/I/816g
 python inference.py --url "https://image.made-in-china.com/202f0j00yUrfpcYJYekG/Propeller-Hat-Colorful-Patchwork-Custom-Design-Cotton-Funny-Baseball-Hats.jpg"
 ```
 > Predicted class: hat (confidence score: 0.99997)
+
+### Running with Docker
+
+To run the inference script using Docker:
+
+```
+docker build -t docker-kleidung-v1 .
+docker run -p 5000:5000 docker-kleidung-v1
+```
